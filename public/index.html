@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countries</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="./js/bundle.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Countries</h1>
+    </header>
+    <div id="app">
+        <h2>Total Population: {{ totalPopulation }}</h2>
+        <section id="form-container">
+            <form>
+                <label for="countries">Select a country: </label>
+                <select id="select-countries" name="countries" v-model="selectedCountry">
+                    <option v-for="(country, index) in countries" :value="country">{{ country.name }}</option>
+                </select>
+            </form>
+            <div v-if="selectedCountry" id="content">
+                <header>
+                    <h2>{{selectedCountry.name}}</h2>
+                </header>
+                <div class="country-info">
+                    <span class="label">Continent:</span>
+                    <span class="text-box">{{selectedCountry.region}}</span>
+                </div>
+                <br>
+                <div class="country-info">
+                    <span class="label">Population:</span>
+                    <span class="text-box">{{selectedCountry.population}}</span>
+                </div>
+                <br>
+                <div class="country-info">
+                    <span class="label">Flag:</span>
+                    <span>
+                        <div class="flag-container">
+                            <img :src="selectedCountry.flag">
+                        </div>
+                    </span>
+                </div>
+                <br>
+                <button v-on:click="saveCountry">Save Country</button>
+            </div>
+            <ul id="favourite-countries">
+
+                <h2 v-if="favouriteCountries.length > 0">Favourite Countries:</h2>
+                <li v-for="country in favouriteCountries">{{country.name}}</li>
+            </ul>
+        </section>
+    </div>
+</body>
+</html>

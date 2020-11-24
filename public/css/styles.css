@@ -1,0 +1,44 @@
+body {
+    font-family: helvetica;
+}
+
+.flag-container > img{
+    height: 200px;
+    display: inline;
+    padding: 10px;
+    border: 1px solid rgb(78, 78, 78);
+}
+
+.flag-container {
+    display: inline;
+    margin: 10px;
+}
+
+.country-info {
+    display: flex;
+    align-items: center;
+}
+
+.text-box {
+    border: 1px solid rgb(78, 78, 78);
+    padding: 10px;
+    margin: 15px;
+    width: 99%;
+}
+
+.label {
+    padding-left: 15px;
+    width: 150px;
+}
+
+#content {
+    border: 1px solid rgb(78, 78, 78);
+    margin: 10px auto 10px auto;
+    width: 80%;
+}
+
+#content > header {
+    background: rgb(138, 138, 138);
+    color: white;
+    padding: 20px;
+}
