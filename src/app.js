@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
             countries : [],
             selectedCountry: null,
             favouriteCountries: [],
+            neighbours: []
         },
         mounted(){
             this.fetchCountries()
@@ -30,17 +31,21 @@ document.addEventListener('DOMContentLoaded', () => {
             saveCountry: function(){
                 this.favouriteCountries.push(this.selectedCountry)
             },
-            findBorders: function(){
-                const neighbours = [];
-                let neighbourCodes = this.selectedCountry.borders
 
-                neighbourCodes.forEach((neighbour) => {
-                    this.countries.find((country) => {
-                    country.cioc === neighbour
-                    neighbours.push(country.name)
-                })})
-                return neighbours;
+            getNeighbours: function(){
+                
+                this.neighbours = [];
+                const neighbourCodes = this.selectedCountry.borders
+
+                 for (const country of this.countries){
+                    if (neighbourCodes.includes(country.cioc)){
+                       this.neighbours.push(country.name)
+                    }   
+                 }
+                
+                 return this.neighbours.join(", ")
             }
+
         }
 
     });
