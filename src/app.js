@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
             countries : [],
             selectedCountry: null,
             favouriteCountries: [],
-            neighbours: []
+            neighbours: [],
+            neighboursPopulation: 0
         },
         mounted(){
             this.fetchCountries()
@@ -33,13 +34,14 @@ document.addEventListener('DOMContentLoaded', () => {
             },
 
             getNeighbours: function(){
-                
+                this.neighboursPopulation = 0
                 this.neighbours = [];
                 const neighbourCodes = this.selectedCountry.borders
 
                  for (const country of this.countries){
                     if (neighbourCodes.includes(country.cioc)){
                        this.neighbours.push(country.name)
+                       this.neighboursPopulation += country.population
                     }   
                  }
                 
