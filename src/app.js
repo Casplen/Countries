@@ -30,7 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
             },
           
             saveCountry: function(){
-                this.favouriteCountries.push(this.selectedCountry)
+                if(!this.favouriteCountries.includes(this.selectedCountry)){
+                    this.favouriteCountries.push(this.selectedCountry)
+                }
+               
             },
 
             getNeighbours: function(){
